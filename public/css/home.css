@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap');
+
+body {
+    background-color: #333333;
+    font-family: 'Poppins', sans-serif;
+}
+
+i {
+    font-size: 300%;
+    margin-right: 50px;
+}
+
+.fixed-size-img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.fixed-size-img {
+    border-radius: 20px;
+}
+
+.photos-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    margin-bottom: 100px;
+}
+
+.photo-text {
+    color: white;
+    text-align: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+    /* Make the container inline-block */
+}
+
+.image-container:hover img {
+    filter: blur(4px);
+}
+
+.edit-button {
+    position: absolute;
+    bottom: 40%;
+    left: 20%;
+    display: none;
+    z-index: 1;
+    width: auto;
+    filter: none !important;
+}
+
+.delete-button {
+    position: absolute;
+    bottom: 40%;
+    left: 50%;
+    display: none;
+    z-index: 1;
+    width: auto;
+    filter: none !important;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #555;
+    color: white;
+}
