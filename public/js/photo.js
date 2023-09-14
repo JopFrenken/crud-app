@@ -38,13 +38,13 @@ let indexPhotos = async () => {
             p.textContent = photo.title;
             p.classList.add('photo-text', 'mt-2');
 
-            imgContainer.appendChild(img); // Append image to the image container
-            imgContainer.appendChild(editButton); // Append edit button to the image container
-            imgContainer.appendChild(deleteButton); // Append delete button to the image container
-            imgContainer.classList.add('image-container'); // Add a class to the image container
-            container.appendChild(imgContainer); // Append the image container to the main container
-            container.appendChild(p); // Append paragraph to the main container
-            photoContainer.appendChild(container); // Append the main container to the photos-container
+            imgContainer.appendChild(img);
+            imgContainer.appendChild(editButton);
+            imgContainer.appendChild(deleteButton);
+            imgContainer.classList.add('image-container');
+            container.appendChild(imgContainer);
+            container.appendChild(p);
+            photoContainer.appendChild(container);
 
             // Add hover event listeners to show/hide buttons
             imgContainer.addEventListener('mouseenter', () => {
