@@ -57,7 +57,8 @@ class PhotoController extends Controller
      */
     public function show($id)
     {
-        //
+        $photo = Photo::find($id);
+        return $photo;
     }
 
     /**
@@ -69,8 +70,30 @@ class PhotoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $photo = Photo::find($id);
+
+        // Delete the old image file if it exists
+        if (File::exists(public_path($photo->image_path))) {
+            File::delete(public_path($photo->image_path));
+        }
+
+        // Store the new image file
+        $imageName = time() . '_' . uniqid() . '.' . $request->image->getClientOriginalExtension();
+        $request->image->move(public_path('images'), $imageName);
+        $photo->image_path = "images/{$imageName}";
+
+        // Update other attributes if needed
+        $photo->title = $request->title;
+
+        // Save the updated photo record
+        try {
+            $photo->save();
+            return response()->json(['message' => 'Photo updated successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Photo update failed: ' . $e->getMessage()], 500);
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -80,6 +103,17 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $photo = Photo::find($id);
+        // Delete the old image file if it exists
+        if (File::exists(public_path($photo->image_path))) {
+            File::delete(public_path($photo->image_path));
+        }
+        $photo->delete();
+
+        try {
+            return response()->json(['message' => "Photo deleted."]);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Photo deletion failed: ' . $e->getMessage()], 500);
+        }
     }
 }

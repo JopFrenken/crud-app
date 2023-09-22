@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins&display=swap');
 
 body {
-    background-color: #333333;
+    background-color: #F3F4F6;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -28,7 +28,7 @@ i {
 }
 
 .photo-text {
-    color: white;
+    /* color: white; */
     text-align: center;
 }
 
@@ -42,28 +42,11 @@ i {
     filter: blur(4px);
 }
 
-.edit-button {
-    position: absolute;
-    bottom: 40%;
-    left: 20%;
-    display: none;
-    z-index: 1;
-    width: auto;
-    filter: none !important;
+.buttons-container {
+    transform: translate(-50%, -50%);
 }
 
-.delete-button {
-    position: absolute;
-    bottom: 40%;
-    left: 50%;
-    display: none;
-    z-index: 1;
-    width: auto;
-    filter: none !important;
-}
-
-.edit-button:hover,
-.delete-button:hover {
-    background-color: #555;
-    color: white;
+.show-img {
+    max-width: 350px;
+    max-height: 350px;
 }
